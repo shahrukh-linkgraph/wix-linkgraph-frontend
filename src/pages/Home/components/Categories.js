@@ -1,16 +1,28 @@
 import React, { useState } from "react"
-import axios from "axios"
+import { getCategory } from "../redux/actions";
+import { connect } from "react-redux";
 
-function Categories() {
 
-    const [category, setCategory] = useState();
+function Categories(props) {
+const {PostData, getCategory} = props
+    // const [category, setCategory] = useState();
 
-    const getCategories = () => {
-        axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
-            // console.log('categories', data.data)
-            setCategory(JSON.stringify(data.data, undefined, 4))
-        });
-    }
+
+    console.log("PostData......", PostData)
+
+    const postDataFromApi = () => {
+        const data = {
+            name: 'demo',
+            category: 'phone'
+        }
+        getCategory(data);
+      }
+    // const getCategories = () => {
+    //     axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
+    //         // console.log('categories', data.data)
+    //         setCategory(JSON.stringify(data.data, undefined, 4))
+    //     });
+    // }
 
     return (
         <div>
@@ -19,10 +31,10 @@ function Categories() {
                 <div className="col-sm-10 py-5 mx-auto">
                     <h3 className="display-8 fw-normal">WIX Categories</h3>
                     <p>
-                        <button type="button" className="btn btn-primary" onClick={getCategories}>GET Categories</button>
+                        <button type="button" className="btn btn-primary" onClick={postDataFromApi}>GET Categories</button>
                     </p>
                     <p>
-                        <textarea className="form-control" rows="6" aria-label="With textarea" value={category} />
+                        <textarea className="form-control" rows="6" aria-label="With textarea" value={PostData} />
                     </p>
                 </div>
             </div>
@@ -30,4 +42,15 @@ function Categories() {
     )
 }
 
-export default Categories
+const mapStateToProps = (state) => ({
+    PostData: state.users.allposts,
+    // requesting: state.homeReducer.r2equesting,
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    getCategory: (data) => dispatch(getCategory(data)),
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+  
+  
