@@ -1,28 +1,28 @@
 import React, { useState } from "react"
 import { getCategory } from "../redux/actions";
 import { connect } from "react-redux";
-
+import axios from "axios";
 
 function Categories(props) {
 const {PostData, getCategory} = props
-    // const [category, setCategory] = useState();
+    const [category, setCategory] = useState();
 
 
     console.log("PostData......", PostData)
 
     const postDataFromApi = () => {
         const data = {
-            name: 'demo',
-            category: 'phone'
+            "paging":4,
+            "limit": 2
         }
         getCategory(data);
       }
-    // const getCategories = () => {
-    //     axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
-    //         // console.log('categories', data.data)
-    //         setCategory(JSON.stringify(data.data, undefined, 4))
-    //     });
-    // }
+    const getCategories = () => {
+        axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
+            // console.log('categories', data.data)
+            setCategory(JSON.stringify(data.data, undefined, 4))
+        });
+    }
 
     return (
         <div>
