@@ -39,6 +39,7 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         loading: true,
+        allPosts: [],
       };
 
     case GET_CATEGORY_SUCCESS:

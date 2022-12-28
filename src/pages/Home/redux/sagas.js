@@ -9,12 +9,11 @@ import {
   getCategoryFailure,
 } from "./actions";
 async function getApi() {
-  const URL = `https://jsonplaceholder.typicode.com/users`;
+  const URL = `${BASE_URL}/get_categories/`
   // const accessToken = await AsyncStorage.getItem('authToken');
   const options = {
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
       Authorization: `token 005a17d69c332ee70c3620c12608d42ba7e1b52f`,
     },
     method: 'GET',
@@ -54,7 +53,8 @@ function* fetchUsers() {
 
 //category
 async function postApi(data) {
-  const URL = `${BASE_URL}/data/`;
+  console.log("post api data",data);
+  const URL = `${BASE_URL}/post_categories/`;
   const options = {
     headers: {
       'Content-Type': 'application/json',
@@ -85,8 +85,8 @@ function* fetchCategory({ data }) {
   console.log("[post", data);
   try {
     const Category = yield call(postApi, data);
-    console.log("Category", Category);
-    yield put(getCategorySuccess(Category));
+    console.log("Category....", Category);
+    // yield put(getCategorySuccess(Category));
   } catch (e) {
     yield put(getCategoryFailure(e));
   }
