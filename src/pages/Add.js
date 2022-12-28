@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -39,7 +39,7 @@ console.log("CategoryCategory >>>>",Category);
       sort: [sort],
     }
     event.preventDefault();
-     getCategory(Category)
+     getCategory(data)
   };
 
   // const postDataFromApi = () => {
