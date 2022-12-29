@@ -1,7 +1,7 @@
 import './Home.css';
-import Categories from './components/Categories'
-import Posts from './components/Posts';
-import AddPostCategory from './components/AddPostCategory'
+import Categories from './components/Categories/Categories'
+import Posts from './components/Categories/Posts';
+import AddPostCategory from './components/Categories/AddPostCategory'
 
 function Home() {
     return (

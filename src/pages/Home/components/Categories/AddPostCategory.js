@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getCategory } from "../redux/actions";
+import { getCategory } from "./redux/actions";
 import { connect } from "react-redux";
 import axios from "axios";
 

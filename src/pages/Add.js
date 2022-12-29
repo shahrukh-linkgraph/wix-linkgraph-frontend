@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getCategory } from "./Home/redux/actions";
-//import React,{ useState } from 'react'
-// import {addstudent} from '../../services/Api'
+import { getCategory } from "./Home/components/Categories/redux/actions";
 const initialValue = {
   paging: {
     limit: "",
@@ -15,19 +13,20 @@ const initialValue = {
   sort: [""],
 };
 const Add = (props) => {
-  const { getCategory, allPosts } = props;
+  const { getCategory, allPosts,PostData } = props;
+  console.log("PostData=>",PostData);
   console.log("allPosts =>", allPosts);
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
 
-  const [Category, setCategory] = useState(initialValue);
-  const { Paging, Filter, Sort, id } = Category;
-  const location = useLocation();
-console.log("CategoryCategory >>>>",Category);
-  const ChangeValue = (e) => {
-    setCategory({[e.target.name]: e.target.value });
-  };
+//   const [Category, setCategory] = useState(initialValue);
+//   const { Paging, Filter, Sort, id } = Category;
+//   const location = useLocation();
+// console.log("CategoryCategory >>>>",Category);
+//   const ChangeValue = (e) => {
+//     setCategory({[e.target.name]: e.target.value });
+//   };
   const AddCategoryDetail = (event) => {
     const data = {
       paging: {
@@ -72,7 +71,7 @@ console.log("CategoryCategory >>>>",Category);
             placeholder="Paging"
             name="Paging"
             onChange={(e) => setPagging(e.target.value)}
-            value={Paging}
+            value={pagging}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -84,7 +83,7 @@ console.log("CategoryCategory >>>>",Category);
             placeholder="Filter"
             name="Filter"
             onChange={(e) => setFilter(e.target.value)}
-            value={Filter}
+            value={filter}
           />
         </Form.Group>
 
@@ -95,7 +94,7 @@ console.log("CategoryCategory >>>>",Category);
             placeholder="Sort"
             name="Sort"
             onChange={(e) => setSort(e.target.value)}
-            value={Sort}
+            value={sort}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -108,11 +107,19 @@ console.log("CategoryCategory >>>>",Category);
           Add Categories
         </Button>
       </Form>
+      <p style={{margin:70}}>
+            <textarea
+              className="form-control"
+              rows="6"
+              aria-label="With textarea"
+                value={JSON.stringify(allPosts?.data?.categories)}
+            />
+          </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.users,
+  PostData: state.users.PostData,
   // requesting: state.homeReducer.r2equesting,
   allPosts: state.users.allPosts,
 });
