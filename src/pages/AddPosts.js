@@ -3,17 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { PostCategory } from "./Home/components/Categories/redux/actions";
-const initialValue = {
-  paging: {
-    limit: "",
-  },
-  filter: {
-    title: "",
-  },
-  sort: [""],
-};
+import { Link } from "react-router-dom";
+import { getUsers } from "./Home/components/Categories/redux/actions";
+
 const AddPosts = (props) => {
-  const { PostCreateListData, PostCategory ,categoryData} = props;
+  const { PostCreateListData, PostCategory ,categoryData,UserData,getUsers} = props;
 
   console.log("PostCreateListData =>", categoryData);
   const [category, setCategory] = useState("");
@@ -38,13 +32,37 @@ const AddPosts = (props) => {
           },
           fieldsets: [fieldsets]
     }
+
     event.preventDefault();
     PostCategory(data)
   };
-
+  const getDataFromApi = () => {
+    getUsers();
+  };
   
   return (
     <div>
+     
+          <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category (Post Payload)</h3>
+          <p style={{marginLeft: 80, marginRight: 80}}>
+          <button
+              type="button"
+              className="btn btn-primary"
+              onClick={getDataFromApi}
+            >
+              Get List Category
+            </button>
+         
+          </p>
+          <p style={{ marginLeft: 80, marginRight: 80 }}>
+            <textarea
+              className="form-control"
+              rows="6"
+              aria-label="With textarea"
+                value={JSON.stringify(UserData?.data?.categories)}
+            />
+          </p>
+       
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Posts Categories</h1>
@@ -126,10 +144,6 @@ const AddPosts = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
-        {/* <Form.Group className="mb-3" controlId="formBasicCity">
-          <Form.Label>Sort</Form.Label>
-          <Form.Control type="text" placeholder="Sort" name="Sort" onChange={(e) => ChangeValue(e)} value={studentcity}  />
-        </Form.Group> */}
         <Button variant="primary" type="submit" onClick={AddPostsCategoryDetail}>
           Add Posts Categories
         </Button>
@@ -139,22 +153,22 @@ const AddPosts = (props) => {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-                // value={JSON.stringify(UserData?.data?.categories)}
+                value={JSON.stringify(categoryData?.data?.categories)}
             />
           </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostCreateListData: state.users,
-  // requesting: state.homeReducer.r2equesting,
-  categoryData: state.users.categoryData,
+  PostCreateListData: state.users.PostCreateListData,
+  UserData: state.users.allUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     PostCategory: (data) => dispatch(PostCategory(data)),
+    getUsers: (data) => dispatch(getUsers(data)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPosts);
 
-// export default Add;

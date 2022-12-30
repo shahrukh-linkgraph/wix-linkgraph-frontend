@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getCategory } from "./Home/components/Categories/redux/actions";
+import { getCategory, getPostCategory } from "./Home/components/Categories/redux/actions";
 const initialValue = {
   paging: {
     limit: "",
@@ -13,9 +13,9 @@ const initialValue = {
   sort: [""],
 };
 const Add = (props) => {
-  const { getCategory, allPosts,PostData } = props;
+  const { getCategory, allPosts,PostData, GetPostListData, getPostCategory} = props;
   console.log("PostData=>",PostData);
-  console.log("allPosts =>", allPosts);
+  // console.log("GetPostListData ===================>", GetPostListData?.data?.posts);
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
@@ -40,7 +40,9 @@ const Add = (props) => {
     event.preventDefault();
      getCategory(data)
   };
-
+  const GetPostListCategoryData = ()=>{
+    getPostCategory()
+}
   // const postDataFromApi = () => {
   //   const data = {
   //     paging: {
@@ -62,6 +64,35 @@ const Add = (props) => {
 
   return (
     <div>
+       <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category</h3>
+          <p style={{marginLeft: 80, marginRight: 80}}>
+          <button
+              type="button"
+              className="btn btn-primary"
+              onClick={GetPostListCategoryData}
+            >
+              Get List Category
+            </button>
+            {/* <Link to={`/Add/`}><button type="button" className="btn btn-primary">
+              Add Category
+              </button></Link> */}
+            {/* <Link to={`/Add/}`}><button
+-              type="button"
+-              className="btn btn-primary"
+-              // onClick={}
+-              // onClick={() => getData()}
+-            >
+-              Add Category
+-            </button></Link>  */}
+          </p>
+          <p style={{ marginLeft: 80, marginRight: 80 }}>
+            <textarea
+              className="form-control"
+              rows="6"
+              aria-label="With textarea"
+                value={JSON.stringify(JSON.stringify(GetPostListData?.data?.posts))}
+            />
+          </p>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Categories</h1>
@@ -112,20 +143,24 @@ const Add = (props) => {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-                value={JSON.stringify(allPosts?.data?.categories)}
+                value={JSON.stringify(PostData?.data?.categories)}
             />
           </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.users.PostData,
+  PostData: state.users.allPosts,
+  GetPostListData: state.users.allCategoryList,
+
   // requesting: state.homeReducer.r2equesting,
-  allPosts: state.users.allPosts,
+  // allPosts: state.users.allPosts,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCategory: (data) => dispatch(getCategory(data)),
+  getPostCategory: (data) => dispatch(getPostCategory(data)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add);

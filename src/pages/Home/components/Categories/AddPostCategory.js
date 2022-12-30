@@ -5,8 +5,6 @@ import axios from "axios";
 
 function Categories(props) {
   const { PostData, getCategory } = props;
-  // const [category, setCategory] = useState();
-
   console.log("PostData......>>>>>>", PostData);
 
   // const postDataFromApi = () => {
@@ -53,7 +51,7 @@ function Categories(props) {
 }
 
 const mapStateToProps = (state) => ({
-  PostData: state.users,
+  PostData: state.users.PostData,
   // requesting: state.homeReducer.r2equesting,
 });
 

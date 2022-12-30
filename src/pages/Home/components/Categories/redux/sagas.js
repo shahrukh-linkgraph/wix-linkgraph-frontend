@@ -116,7 +116,7 @@ function* fetchPostCreateCategory({ data }) {
   try {
     const PostsCategory = yield call(postCreateApi, data);
     console.log("Post Create Category....", PostsCategory);
-    //  yield put(getCategorySuccess(PostsCategory));
+     yield put(PostCategorySuccess(PostsCategory));
   } catch (e) {
     yield put(PostCategoryFailure(e));
   }

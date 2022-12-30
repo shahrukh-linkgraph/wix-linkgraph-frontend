@@ -25,7 +25,7 @@ function AddPostCategory(props) {
     <div>
       <div className="bg-light rounded">
         <div className="col-sm-10 py-2 mx-auto">
-          <h3 className="display-8 fw-normal">WIX Category (Post Payload)</h3>
+          <h3 className="display-8 fw-normal">WIX Category</h3>
           <p style={{display:"flex",justifyContent:"space-between"}}>
           <button
               type="button"
@@ -37,14 +37,6 @@ function AddPostCategory(props) {
             <Link to={`/Add/`}><button type="button" className="btn btn-primary">
               Add Category
               </button></Link>
-            {/* <Link to={`/Add/}`}><button
--              type="button"
--              className="btn btn-primary"
--              // onClick={}
--              // onClick={() => getData()}
--            >
--              Add Category
--            </button></Link>  */}
           </p>
           <p>
             <textarea

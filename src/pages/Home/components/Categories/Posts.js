@@ -29,7 +29,7 @@ function Posts(props) {
                         <button type="button" className="btn btn-primary" onClick={GetPostListCategoryData}>GET Post List Data</button>
                         
             <Link to={`/AddPosts/`}><button type="button" className="btn btn-primary">
-              Add Category
+              Add Post Category
               </button></Link>
                     </p>
                     <p>
