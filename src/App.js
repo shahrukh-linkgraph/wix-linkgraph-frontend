@@ -12,6 +12,7 @@ import Posts from './pages/Home/components/Categories/Posts';
 import Add from './pages/Add';
 import AddPosts from './pages/AddPosts';
 import NavBar from './pages/NavBar/NavBar';
+import Dashboard from './pages/Dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route exact path="/add" element={<Add />} />
           <Route exact path="/get" element={<AddPostCategory />} />
           <Route exact path="/post" element={<Categories />} />
