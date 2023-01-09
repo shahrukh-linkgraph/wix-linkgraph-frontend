@@ -3,18 +3,15 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 // import { PostCategory } from "./Home/components/Categories/redux/actions";
+import { PostCategory } from "./redux/actions";
 import { Link } from "react-router-dom";
 // import { getUsers } from "./Home/components/Categories/redux/actions";
-// import getUsers from "../pages/AddCategories/redux/actions"
-// import PostCategory from "../pages/AddPostsCategories/redux/actions"
-import {getUsers} from "../pages/AddCategories/redux/actions"
-import {PostCategory} from "../pages/AddPostsCategories/redux/actions"
-const AddPosts = (props) => {
+// import { getUsers } from "../AddCategories/redux/actions";
+
+const AddPostCategories = (props) => {
   const { PostCreateListData, PostCategory, categoryData, UserData, getUsers } = props;
 
-  console.log("PostCreateListData =>", PostCreateListData);
-  console.log("UserData =>", UserData);
-
+  console.log("PostCreateListData =>", categoryData);
   const [category, setCategory] = useState("");
   const [label, setLabel] = useState("");
   const [description, setDescription] = useState("");
@@ -149,31 +146,31 @@ const AddPosts = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={AddPostsCategoryDetail}>
+        {/* <Button variant="primary" type="submit" onClick={AddPostsCategoryDetail}>
           Add Posts Categories
-        </Button>
+        </Button> */}
       </Form>
-      <p style={{ margin: 70 }}>
+      {/* <p style={{ margin: 70 }}>
         <textarea
           className="form-control"
           rows="6"
           aria-label="With textarea"
           value={JSON.stringify(categoryData?.data?.categories)}
         />
-      </p>
+      </p> */}
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostCreateListData: state.AddPostsCategoriesReducer.PostCreateListData,
-  UserData: state.users.allUser,
+  PostCreateListData: state.users.PostCreateListData,
+//   UserData: state.users.allUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   PostCategory: (data) => dispatch(PostCategory(data)),
-  getUsers: (data) => dispatch(getUsers(data)),
+//   getUsers: (data) => dispatch(getUsers(data)),
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPosts);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPostCategories);
 

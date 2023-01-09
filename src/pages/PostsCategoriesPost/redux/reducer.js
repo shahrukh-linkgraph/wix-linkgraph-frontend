@@ -1,38 +1,39 @@
 import {
-  POST_LOGIN_USER_REQUEST,
-  POST_LOGIN_USER_SUCCESS,
-  POST_LOGIN_USER_FAILURE,
+  GET_CATEGORY_REQUEST,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_FAILURE,
+  
 } from "./type";
 
 const initialState = {
-  loginUser: [],
+  allCategoryList: [],
   loading: false,
   error: null,
 };
 
-export default function loginUserReducer(state = initialState, action) {
+export default function postscategoriesReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_LOGIN_USER_REQUEST:
+   
+    case GET_CATEGORY_REQUEST:
       return {
         ...state,
         loading: true,
-        loginUser: [],
+        allPosts: [],
       };
 
-    case POST_LOGIN_USER_SUCCESS:
+    case GET_CATEGORY_SUCCESS:
       return {
         ...state,
         loading: false,
-        loginUser: action.data,
+        allPosts: action.data,
       };
 
-    case POST_LOGIN_USER_FAILURE:
+    case GET_CATEGORY_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
-
     default:
       return state;
   }

@@ -3,10 +3,8 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 // import { getCategory, getPostCategory } from "./Home/components/Categories/redux/actions";
-// import { getCategory } from "./PostsCategoriesPost/redux/actions";
-// import { getPostCategory } from "./PostCategories/redux/actions";
-import { getCategory } from "./PostsCategoriesPost/redux/actions";
-import { getPostCategory } from "./PostCategories/redux/actions";
+import { getCategory } from "./redux/actions";
+
 const initialValue = {
   paging: {
     limit: "",
@@ -17,10 +15,10 @@ const initialValue = {
   sort: [""],
 };
 
-const Add = (props) => {
+const PostsCategoriesPost = (props) => {
   const { getCategory, allPosts, PostData, GetPostListData, getPostCategory } = props;
   console.log("PostData=>", PostData);
-  console.log("GetPostListData ===================>", GetPostListData)
+  // console.log("GetPostListData ===================>", GetPostListData?.data?.posts);
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
@@ -157,8 +155,8 @@ const Add = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.postscategoriesReducer.allPosts,
-  GetPostListData: state.postslistcategory.allCategoryList,
+  PostData: state.users.allPosts,
+  // GetPostListData: state.users.allCategoryList,
 
   // requesting: state.homeReducer.r2equesting,
   // allPosts: state.users.allPosts,
@@ -166,8 +164,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCategory: (data) => dispatch(getCategory(data)),
-  getPostCategory: (data) => dispatch(getPostCategory(data)),
+  // getPostCategory: (data) => dispatch(getPostCategory(data)),
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Add);
+export default connect(mapStateToProps, mapDispatchToProps)(PostsCategoriesPost);

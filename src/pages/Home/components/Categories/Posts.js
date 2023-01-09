@@ -9,15 +9,6 @@ function Posts(props) {
     const GetPostListCategoryData = ()=>{
         getPostCategory()
     }
-    // const [posts, setPosts] = useState();
-
-    // const getPosts = () => {
-    //     axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
-    //         // console.log('posts', data.data)
-    //         setPosts(JSON.stringify(data.data, undefined, 4))
-    //     });
-    // }
-
     return (
 
         <div>

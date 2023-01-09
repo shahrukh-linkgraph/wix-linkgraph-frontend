@@ -4,9 +4,9 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { PostLoginUserRequest } from "./redux/actions";
 
 const LoginLinkGraph = (props) => {
-    const { postLoginUserData } = props;
+    const { postLoginUserData, PostLoginUserRequest } = props;
 
-    console.log("UserData......", postLoginUserData);
+    console.log("postLoginUserData login users....../////////////>>>>>>>>>>>>>>>>>>>>", postLoginUserData.loginUser.data);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

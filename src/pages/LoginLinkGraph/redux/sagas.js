@@ -2,7 +2,7 @@ import { call, put, takeLatest, all } from "redux-saga/effects";
 import {
   POST_LOGIN_USER_REQUEST,
 } from "./type";
-import { BASE_URL } from "../../../config/app";
+// import { BASE_URL } from "../../../config/app";
 import XHR from "../../../utils/XHR";
 import {
   PostLoginUserSuccess,
@@ -10,12 +10,12 @@ import {
 } from "./actions";
 
 async function PostLoginUserApi(data) {
-  console.log("post create api data", data);
-  const URL = `${BASE_URL}/create_categories/`;
+  console.log("PostLoginUserRequest", data);
+  const URL = `https://api.searchatlas.com/api/token/`;
   const options = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `token 005a17d69c332ee70c3620c12608d42ba7e1b52f`,
+      // Authorization: `token 005a17d69c332ee70c3620c12608d42ba7e1b52f`,
     },
     method: "POST",
     data,
@@ -27,9 +27,9 @@ async function PostLoginUserApi(data) {
 function* PostLoginUser({ data }) {
   console.log("fetchPostCreateCategory", data);
   try {
-    const PostsCategory = yield call(PostLoginUserApi, data);
-    console.log("Post Create Category....", PostsCategory);
-    yield put(PostLoginUserSuccess(PostsCategory));
+    const userlogin = yield call(PostLoginUserApi, data);
+    console.log("userlogin....", userlogin);
+    yield put(PostLoginUserSuccess(userlogin));
   } catch (e) {
     console.log('error', e);
     yield put(PostLoginUserFailure(e));

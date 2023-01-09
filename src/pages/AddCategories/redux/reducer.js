@@ -1,38 +1,38 @@
 import {
-  POST_LOGIN_USER_REQUEST,
-  POST_LOGIN_USER_SUCCESS,
-  POST_LOGIN_USER_FAILURE,
+  GET_USERS_REQUEST,
+  GET_USERS_SUCCESS,
+  GET_USERS_FAILURE,
 } from "./type";
 
 const initialState = {
-  loginUser: [],
+  allUser: [],
   loading: false,
   error: null,
 };
 
-export default function loginUserReducer(state = initialState, action) {
+export default function users(state = initialState, action) {
+  console.log("actino",action);
   switch (action.type) {
-    case POST_LOGIN_USER_REQUEST:
+  
+    case GET_USERS_REQUEST:
       return {
         ...state,
         loading: true,
-        loginUser: [],
       };
 
-    case POST_LOGIN_USER_SUCCESS:
+    case GET_USERS_SUCCESS:
       return {
         ...state,
         loading: false,
-        loginUser: action.data,
+        allUser: action.data,
       };
 
-    case POST_LOGIN_USER_FAILURE:
+    case GET_USERS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
-
     default:
       return state;
   }
