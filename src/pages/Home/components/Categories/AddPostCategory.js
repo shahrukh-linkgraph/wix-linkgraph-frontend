@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getCategory } from "./redux/actions";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 
 function Categories(props) {
   const { PostData, getCategory } = props;
@@ -31,7 +31,7 @@ function Categories(props) {
             <button
               type="button"
               className="btn btn-primary"
-              // onClick={postDataFromApi}
+            // onClick={postDataFromApi}
             >
               POST Category
             </button>
@@ -41,7 +41,7 @@ function Categories(props) {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-              //   value={PostData}
+            //   value={PostData}
             />
           </p>
         </div>

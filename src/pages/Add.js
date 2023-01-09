@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getCategory, getPostCategory } from "./Home/components/Categories/redux/actions";
+
 const initialValue = {
   paging: {
     limit: "",
@@ -12,21 +13,22 @@ const initialValue = {
   },
   sort: [""],
 };
+
 const Add = (props) => {
-  const { getCategory, allPosts,PostData, GetPostListData, getPostCategory} = props;
-  console.log("PostData=>",PostData);
+  const { getCategory, allPosts, PostData, GetPostListData, getPostCategory } = props;
+  console.log("PostData=>", PostData);
   // console.log("GetPostListData ===================>", GetPostListData?.data?.posts);
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
 
-//   const [Category, setCategory] = useState(initialValue);
-//   const { Paging, Filter, Sort, id } = Category;
-//   const location = useLocation();
-// console.log("CategoryCategory >>>>",Category);
-//   const ChangeValue = (e) => {
-//     setCategory({[e.target.name]: e.target.value });
-//   };
+  //   const [Category, setCategory] = useState(initialValue);
+  //   const { Paging, Filter, Sort, id } = Category;
+  //   const location = useLocation();
+  // console.log("CategoryCategory >>>>",Category);
+  //   const ChangeValue = (e) => {
+  //     setCategory({[e.target.name]: e.target.value });
+  //   };
   const AddCategoryDetail = (event) => {
     const data = {
       paging: {
@@ -38,11 +40,13 @@ const Add = (props) => {
       sort: [sort],
     }
     event.preventDefault();
-     getCategory(data)
+    getCategory(data)
   };
-  const GetPostListCategoryData = ()=>{
+
+  const GetPostListCategoryData = () => {
     getPostCategory()
-}
+  }
+
   // const postDataFromApi = () => {
   //   const data = {
   //     paging: {
@@ -64,19 +68,19 @@ const Add = (props) => {
 
   return (
     <div>
-       <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category</h3>
-          <p style={{marginLeft: 80, marginRight: 80}}>
-          <button
-              type="button"
-              className="btn btn-primary"
-              onClick={GetPostListCategoryData}
-            >
-              Get List Category
-            </button>
-            {/* <Link to={`/Add/`}><button type="button" className="btn btn-primary">
+      <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category</h3>
+      <p style={{ marginLeft: 80, marginRight: 80 }}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={GetPostListCategoryData}
+        >
+          Get List Category
+        </button>
+        {/* <Link to={`/Add/`}><button type="button" className="btn btn-primary">
               Add Category
               </button></Link> */}
-            {/* <Link to={`/Add/}`}><button
+        {/* <Link to={`/Add/}`}><button
 -              type="button"
 -              className="btn btn-primary"
 -              // onClick={}
@@ -84,15 +88,15 @@ const Add = (props) => {
 -            >
 -              Add Category
 -            </button></Link>  */}
-          </p>
-          <p style={{ marginLeft: 80, marginRight: 80 }}>
-            <textarea
-              className="form-control"
-              rows="6"
-              aria-label="With textarea"
-                value={JSON.stringify(JSON.stringify(GetPostListData?.data?.posts))}
-            />
-          </p>
+      </p>
+      <p style={{ marginLeft: 80, marginRight: 80 }}>
+        <textarea
+          className="form-control"
+          rows="6"
+          aria-label="With textarea"
+          value={JSON.stringify(JSON.stringify(GetPostListData?.data?.posts))}
+        />
+      </p>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Categories</h1>
@@ -138,14 +142,14 @@ const Add = (props) => {
           Add Categories
         </Button>
       </Form>
-      <p style={{margin:70}}>
-            <textarea
-              className="form-control"
-              rows="6"
-              aria-label="With textarea"
-                value={JSON.stringify(PostData?.data?.categories)}
-            />
-          </p>
+      <p style={{ margin: 70 }}>
+        <textarea
+          className="form-control"
+          rows="6"
+          aria-label="With textarea"
+          value={JSON.stringify(PostData?.data?.categories)}
+        />
+      </p>
     </div>
   );
 };
@@ -164,5 +168,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add);
-
-// export default Add;

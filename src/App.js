@@ -13,12 +13,13 @@ import Add from './pages/Add';
 import AddPosts from './pages/AddPosts';
 import NavBar from './pages/NavBar/NavBar';
 import Dashboard from './pages/Dashboard/Dashboard';
+import LoginLinkGraph from './pages/LoginLinkGraph';
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <NavBar />
-        {/* <Navigation /> */}
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -27,8 +28,7 @@ function App() {
           <Route exact path="/post" element={<Categories />} />
           <Route exact path="/posts" element={<Posts />} />
           <Route exact path="/addposts" element={<AddPosts />} />
-
-
+          <Route exact path="/login" element={<LoginLinkGraph />} />
 
         </Routes>
       </BrowserRouter>

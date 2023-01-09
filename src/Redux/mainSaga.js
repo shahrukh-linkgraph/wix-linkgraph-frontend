@@ -1,9 +1,10 @@
 import { all } from 'redux-saga/effects'
-// import userSaga from '../pages/Home/redux/sagas'
 import userSaga from '../pages/Home/components/Categories/redux/sagas'
+import loginUserSaga from '../pages/LoginLinkGraph/redux/sagas'
 
-export default function* rootSaga() {
+export default function* mainSaga() {
   yield all([
-    userSaga(),
+    userSaga,
+    // loginUserSaga,
   ])
 }

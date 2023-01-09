@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeLatest, all } from "redux-saga/effects";
 import {
   GET_USERS_REQUEST,
   GET_CATEGORY_REQUEST,
@@ -116,16 +116,16 @@ function* fetchPostCreateCategory({ data }) {
   try {
     const PostsCategory = yield call(postCreateApi, data);
     console.log("Post Create Category....", PostsCategory);
-     yield put(PostCategorySuccess(PostsCategory));
+    yield put(PostCategorySuccess(PostsCategory));
   } catch (e) {
     yield put(PostCategoryFailure(e));
   }
 }
 
-function* userSaga() {
-  yield takeEvery(GET_USERS_REQUEST, fetchUsers);
-  yield takeEvery(GET_POST_CATEGORY_REQUEST, fetchPostList);
-  yield takeEvery(GET_CATEGORY_REQUEST, fetchCategory);
-  yield takeEvery(POST_CATEGORY_REQUEST, fetchPostCreateCategory);
-}
-export default userSaga;
+export default all([
+  takeLatest(GET_USERS_REQUEST, fetchUsers),
+  takeLatest(GET_POST_CATEGORY_REQUEST, fetchPostList),
+  takeLatest(GET_CATEGORY_REQUEST, fetchCategory),
+  takeLatest(POST_CATEGORY_REQUEST, fetchPostCreateCategory),
+])
+

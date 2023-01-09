@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import {
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
@@ -29,47 +28,47 @@ export const getUsersFailure = (error) => ({
 });
 
 //FOR CATEGORY
-export const getCategory =(data)=>({
-    type: GET_CATEGORY_REQUEST,
-    data
+export const getCategory = (data) => ({
+  type: GET_CATEGORY_REQUEST,
+  data
 });
 
-export const getCategorySuccess =(data)=>({
-    type: GET_CATEGORY_SUCCESS,
-    data
+export const getCategorySuccess = (data) => ({
+  type: GET_CATEGORY_SUCCESS,
+  data
 });
 
-export const getCategoryFailure =(error)=>({
-    type: GET_CATEGORY_FAILURE,
-    error
+export const getCategoryFailure = (error) => ({
+  type: GET_CATEGORY_FAILURE,
+  error
 })
 //FOR POST CATEGORY LIST
-export const getPostCategory =()=>({
+export const getPostCategory = () => ({
   type: GET_POST_CATEGORY_REQUEST,
-  
+
 });
 
-export const getPostCategorySuccess =(data)=>({
+export const getPostCategorySuccess = (data) => ({
   type: GET_POST_CATEGORY_SUCCESS,
   data
 });
 
-export const getPostCategoryFailure =(error)=>({
+export const getPostCategoryFailure = (error) => ({
   type: GET_POST_CATEGORY_FAILURE,
   error
 })
 //FOR POST CATEGORY POST
-export const PostCategory =(data)=>({
+export const PostCategory = (data) => ({
   type: POST_CATEGORY_REQUEST,
   data
 });
 
-export const PostCategorySuccess =(data)=>({
+export const PostCategorySuccess = (data) => ({
   type: POST_CATEGORY_SUCCESS,
   data
 });
 
-export const PostCategoryFailure =(error)=>({
+export const PostCategoryFailure = (error) => ({
   type: POST_CATEGORY_FAILURE,
   error
 })

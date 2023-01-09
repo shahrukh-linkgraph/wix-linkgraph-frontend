@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 import { getUsers } from "./redux/actions";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 function AddPostCategory(props) {
   const { UserData, getUsers } = props;
 
@@ -26,8 +26,8 @@ function AddPostCategory(props) {
       <div className="bg-light rounded">
         <div className="col-sm-10 py-2 mx-auto">
           <h3 className="display-8 fw-normal">WIX Category</h3>
-          <p style={{display:"flex",justifyContent:"space-between"}}>
-          <button
+          <p style={{ display: "flex", justifyContent: "space-between" }}>
+            <button
               type="button"
               className="btn btn-primary"
               onClick={getDataFromApi}
@@ -36,14 +36,14 @@ function AddPostCategory(props) {
             </button>
             <Link to={`/Add/`}><button type="button" className="btn btn-primary">
               Add Category
-              </button></Link>
+            </button></Link>
           </p>
           <p>
             <textarea
               className="form-control"
               rows="6"
               aria-label="With textarea"
-                value={JSON.stringify(UserData?.data?.categories)}
+              value={JSON.stringify(UserData?.data?.categories)}
             />
           </p>
         </div>

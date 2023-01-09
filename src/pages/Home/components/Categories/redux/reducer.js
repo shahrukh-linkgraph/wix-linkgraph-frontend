@@ -14,10 +14,10 @@ import {
 } from "./type";
 
 const initialState = {
-  allPosts:[],
+  allPosts: [],
   allUser: [],
-  allCategoryList:[],
-  categoryData:[],
+  allCategoryList: [],
+  categoryData: [],
   loading: false,
   error: null,
 };
@@ -63,7 +63,7 @@ export default function users(state = initialState, action) {
         loading: false,
         error: action.error,
       };
-      case GET_POST_CATEGORY_REQUEST:
+    case GET_POST_CATEGORY_REQUEST:
       return {
         ...state,
         loading: true,
