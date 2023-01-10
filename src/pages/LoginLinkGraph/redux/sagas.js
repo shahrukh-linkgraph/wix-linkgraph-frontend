@@ -25,10 +25,11 @@ async function PostLoginUserApi(data) {
 }
 
 function* PostLoginUser({ data }) {
-  console.log("fetchPostCreateCategory", data);
+  // console.log("fetchPostCreateCategory", data);
   try {
     const userlogin = yield call(PostLoginUserApi, data);
-    console.log("userlogin....", userlogin);
+    // console.log("userlogin....", userlogin);
+    localStorage.setItem("JWT Token",userlogin?.data?.token)
     yield put(PostLoginUserSuccess(userlogin));
   } catch (e) {
     console.log('error', e);

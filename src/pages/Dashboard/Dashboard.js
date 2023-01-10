@@ -1,7 +1,11 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 
 function Dashboard() {
-
+  const [token, setToken] = useState(localStorage.getItem('JWT Token'));
+  console.log("My JWT Token=========>", token);
+useEffect(()=>{
+  localStorage.getItem('JWT Token')
+},[])
 
   return (
     <div>

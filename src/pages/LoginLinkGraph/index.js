@@ -6,11 +6,12 @@ import { PostLoginUserRequest } from "./redux/actions";
 const LoginLinkGraph = (props) => {
     const { postLoginUserData, PostLoginUserRequest } = props;
 
-    console.log("postLoginUserData login users....../////////////>>>>>>>>>>>>>>>>>>>>", postLoginUserData.loginUser.data);
+    // console.log("postLoginUserData login users....../////////////>>>>>>>>>>>>>>>>>>>>", postLoginUserData?.loginUser?.data?.token);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [token, setToken] = useState(localStorage.getItem('JWT Token'));
+// console.log("My JWT Token=========>", token);
     const Login = (event) => {
 
         const data = {
