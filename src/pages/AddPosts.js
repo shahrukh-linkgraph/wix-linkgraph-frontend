@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
-// import { PostCategory } from "./Home/components/Categories/redux/actions";
-import { Link } from "react-router-dom";
-// import { getUsers } from "./Home/components/Categories/redux/actions";
-// import getUsers from "../pages/AddCategories/redux/actions"
-// import PostCategory from "../pages/AddPostsCategories/redux/actions"
-import {getUsers} from "../pages/AddCategories/redux/actions"
-import {PostCategory} from "../pages/AddPostsCategories/redux/actions"
+
+import { getUsers } from "../pages/AddCategories/redux/actions";
+import { PostCategory } from "../pages/AddPostsCategories/redux/actions";
 const AddPosts = (props) => {
-  const { PostCreateListData, PostCategory, categoryData, UserData, getUsers } = props;
+  const { PostCategory, categoryData, UserData, getUsers } =
+    props;
 
-  console.log("PostCreateListData =>", PostCreateListData);
-  console.log("UserData =>", UserData);
-
-  const [category, setCategory] = useState("");
+  // console.log("PostCreateListData =>", PostCreateListData);
+  // console.log("UserData =>", UserData);
   const [label, setLabel] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -23,7 +17,6 @@ const AddPosts = (props) => {
   const [language, setLanguage] = useState("");
   const [slug, setSlug] = useState("");
   const [fieldsets, setFieldsets] = useState("");
-
 
   const AddPostsCategoryDetail = (event) => {
     const data = {
@@ -33,13 +26,13 @@ const AddPosts = (props) => {
         title: title,
         displayPosition: displayPosition,
         language: language,
-        slug: slug
+        slug: slug,
       },
-      fieldsets: [fieldsets]
-    }
+      fieldsets: [fieldsets],
+    };
 
     event.preventDefault();
-    PostCategory(data)
+    PostCategory(data);
   };
   const getDataFromApi = () => {
     getUsers();
@@ -47,8 +40,12 @@ const AddPosts = (props) => {
 
   return (
     <div>
-
-      <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category (Post Payload)</h3>
+      <h3
+        className="display-8 fw-normal"
+        style={{ marginLeft: 80, marginRight: 80 }}
+      >
+        WIX Category (Post Payload)
+      </h3>
       <p style={{ marginLeft: 80, marginRight: 80 }}>
         <button
           type="button"
@@ -57,7 +54,6 @@ const AddPosts = (props) => {
         >
           Get List Category
         </button>
-
       </p>
       <p style={{ marginLeft: 80, marginRight: 80 }}>
         <textarea
@@ -149,7 +145,11 @@ const AddPosts = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={AddPostsCategoryDetail}>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={AddPostsCategoryDetail}
+        >
           Add Posts Categories
         </Button>
       </Form>
@@ -172,8 +172,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   PostCategory: (data) => dispatch(PostCategory(data)),
   getUsers: (data) => dispatch(getUsers(data)),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPosts);
-

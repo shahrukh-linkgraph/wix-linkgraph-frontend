@@ -14,7 +14,7 @@ export default function AddPostsCategoriesReducer(
   state = initialState,
   action
 ) {
-  console.log("action Add post", action);
+  
   switch (action.type) {
     case POST_CATEGORY_REQUEST:
       return {

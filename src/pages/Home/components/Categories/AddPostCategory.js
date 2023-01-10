@@ -1,26 +1,9 @@
 import React, { useState } from "react";
 import { getCategory } from "./redux/actions";
 import { connect } from "react-redux";
-// import axios from "axios";
-
 function Categories(props) {
   const { PostData, getCategory } = props;
   console.log("PostData......>>>>>>", PostData);
-
-  // const postDataFromApi = () => {
-  //   const data = {
-  //     paging: { limit: 4 },
-  //     filter: { title: "summer" },
-  //     sort: ["title"],
-  //   };
-  //   getCategory(data);
-  //   //   }
-  //   // const getCategories = () => {
-  //   //     axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
-  //   //         // console.log('categories', data.data)
-  //   //         setCategory(JSON.stringify(data.data, undefined, 4))
-  //   //     });
-  // };
 
   return (
     <div>
@@ -52,7 +35,6 @@ function Categories(props) {
 
 const mapStateToProps = (state) => ({
   PostData: state.users.PostData,
-  // requesting: state.homeReducer.r2equesting,
 });
 
 const mapDispatchToProps = (dispatch) => ({

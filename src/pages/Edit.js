@@ -1,7 +1,6 @@
 import React,{useState,  useEffect} from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom'
-//import React,{ useState } from 'react'
 import {editstudent, getstudent} from '../../services/Api'
 const initialValue = 
 {
@@ -21,7 +20,6 @@ const Edit = () => {
   const loadstudentdata = async () => {
     const response = await getstudent(id)
     setStudent(response.data)
-    //console.log(response.data)
   }
   const ChangeValue = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value })

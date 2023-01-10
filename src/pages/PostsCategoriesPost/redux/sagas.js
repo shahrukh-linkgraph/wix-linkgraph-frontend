@@ -1,11 +1,10 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import { GET_CATEGORY_REQUEST } from "./type";
-// import { BASE_URL } from "../../../../../config/app";
 import { BASE_URL } from "../../../config/app";
-// import XHR from "../../../../../utils/XHR";
 import XHR from "../../../utils/XHR";
 import { getCategorySuccess, getCategoryFailure } from "./actions";
 //category
+
 async function postApi(data) {
   console.log("post api data", data);
   const URL = `${BASE_URL}/post_categories/`;

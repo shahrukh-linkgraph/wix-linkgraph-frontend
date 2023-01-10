@@ -1,4 +1,3 @@
-// Category List Users
 //Post Get Category List
 export const GET_POST_CATEGORY_REQUEST = "GET_POST_CATEGORY_REQUEST";
 export const GET_POST_CATEGORY_SUCCESS = "GET_POST_CATEGORY_SUCCESS";

@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export default function users(state = initialState, action) {
-  console.log("actino",action);
   switch (action.type) {
   
     case GET_USERS_REQUEST:
