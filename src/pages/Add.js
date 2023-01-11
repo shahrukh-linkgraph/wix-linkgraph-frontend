@@ -11,6 +11,8 @@ const Add = (props) => {
     GetPostListData,
     listPostsRequest,
   } = props;
+// console.log("Post DAta=============>",PostData?.postCategory?.data?.categories);
+// console.log("GetPostListData=============>",GetPostListData?.listPosts?.data?.posts);
 
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
@@ -56,7 +58,7 @@ const Add = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(GetPostListData?.data?.posts, undefined, 4)}
+          value={JSON.stringify(GetPostListData?.listPosts?.data?.posts, undefined, 4)}
         />
       </p>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
@@ -104,15 +106,15 @@ const Add = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(PostData?.data?.categories, undefined, 4)}
+          value={JSON.stringify(PostData?.postCategory?.data?.categories)}
         />
       </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.postCategory,
-  GetPostListData: state.listPosts,
+  PostData: state.addPostcategoryReducer,
+  GetPostListData: state.ListPosts,
 });
 
 const mapDispatchToProps = (dispatch) => ({

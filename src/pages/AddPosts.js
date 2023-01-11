@@ -6,11 +6,11 @@ import { listCategoriesRequest } from "./ListCategory/redux/actions";
 import { addCategoryRequest } from "./AddCategory/redux/actions";
 
 const AddPosts = (props) => {
-  const { addCategoryRequest, categoryData, UserData, listCategoriesRequest } =
+  const { addCategoryRequest, categoryData, UserData, listCategoriesRequest,PostCreateListData } =
     props;
 
-  // console.log("PostCreateListData =>", PostCreateListData);
-  // console.log("UserData =>", UserData);
+  // console.log("PostCreateListData ============>", PostCreateListData);
+  // console.log("UserData =================>", UserData?.categories?.data?.categories);
   const [label, setLabel] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -61,7 +61,7 @@ const AddPosts = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(UserData?.data?.categories, undefined, 4)}
+          value={JSON.stringify(UserData?.categories?.data?.categories, undefined, 4)}
         />
       </p>
 
@@ -166,8 +166,8 @@ const AddPosts = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  PostCreateListData: state.category,
-  UserData: state.categories,
+  PostCreateListData: state.AddCategorYReducer,
+  UserData: state.listCategoryReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -20,7 +20,7 @@ async function listPostsApi() {
 function* listPosts() {
   try {
     const listPost = yield call(listPostsApi);
-    console.log("List Post category", listPost);
+    // console.log("List Post category...........", listPost);
     yield put(listPostsSuccess(listPost));
   } catch (e) {
     yield put(listPostsFailure(e));

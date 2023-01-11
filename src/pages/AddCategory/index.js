@@ -17,7 +17,7 @@ const AddCategory = (props) => {
     getUsers,
   } = props;
 
-  console.log("PostCreateListData =>", category);
+  // console.log("PostCreateListData =======================>", PostCreateListData?.data);
   const [label, setLabel] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -69,7 +69,7 @@ const AddCategory = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(UserData?.data?.categories, undefined, 4)}
+          value={JSON.stringify(UserData?.data?.categories)}
         />
       </p>
 
@@ -170,7 +170,7 @@ const AddCategory = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  PostCreateListData: state.category,
+  PostCreateListData: state.AddCategorYReducer,
   //   UserData: state.users.allUser,
 });
 
