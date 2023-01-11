@@ -1,17 +1,16 @@
-import { all } from 'redux-saga/effects'
-// import userSaga from '../pages/Home/components/Categories/redux/sagas'
-// import userSaga from '../pages/AddCategories/redux/sagas'
-import userSaga from "../pages/AddCategories/redux/sagas"
-import loginUserSaga from '../pages/LoginLinkGraph/redux/sagas'
-import postslistcategorySaga from '../pages/PostCategories/redux/sagas'
-import AddPostsCategoriesSaga from '../pages/AddPostsCategories/redux/sagas'
-import postscategoriesSaga from '../pages/PostsCategoriesPost/redux/sagas'
+import { all } from "redux-saga/effects";
+import ListCategorySaga from "../pages/ListCategory/redux/sagas";
+import loginUserSaga from "../pages/LoginLinkGraph/redux/sagas";
+import postslistcategorySaga from "../pages/ListPosts/redux/sagas";
+import AddCategorySaga from "../pages/AddCategory/redux/sagas";
+import postscategoriesSaga from "../pages/AddPostCategory/redux/sagas";
+
 export default function* mainSaga() {
   yield all([
-    userSaga,
+    ListCategorySaga,
     loginUserSaga,
     postslistcategorySaga,
-    AddPostsCategoriesSaga,
-    postscategoriesSaga
-  ])
+    AddCategorySaga,
+    postscategoriesSaga,
+  ]);
 }

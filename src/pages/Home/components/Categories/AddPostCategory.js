@@ -14,7 +14,7 @@ function Categories(props) {
             <button
               type="button"
               className="btn btn-primary"
-            // onClick={postDataFromApi}
+              // onClick={postDataFromApi}
             >
               POST Category
             </button>
@@ -24,7 +24,7 @@ function Categories(props) {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-            //   value={PostData}
+              //   value={PostData}
             />
           </p>
         </div>
@@ -34,7 +34,7 @@ function Categories(props) {
 }
 
 const mapStateToProps = (state) => ({
-  PostData: state.users.PostData,
+  PostData: state.Categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({

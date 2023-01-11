@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getPostCategory } from "./redux/actions";
+import { listPostsRequest } from "./redux/actions";
 import { Link } from "react-router-dom";
-function Posts(props) {
-  const { GetPostListData, getPostCategory } = props;
+
+function ListPosts(props) {
+  const { GetPostListData, listPostsRequest } = props;
+
   console.log("GetPostListData>>>>>>", GetPostListData);
   const GetPostListCategoryData = () => {
-    getPostCategory();
+    listPostsRequest();
   };
 
   return (
@@ -23,19 +25,13 @@ function Posts(props) {
             >
               GET Post List Data
             </button>
-
-            <Link to={`/AddPosts/`}>
-              <button type="button" className="btn btn-primary">
-                Add Post Category
-              </button>
-            </Link>
           </p>
           <p>
             <textarea
               className="form-control"
               rows="6"
               aria-label="With textarea"
-              value={JSON.stringify(GetPostListData)}
+              value={JSON.stringify(GetPostListData, undefined, 4)}
             />
           </p>
         </div>
@@ -49,7 +45,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPostCategory: (data) => dispatch(getPostCategory(data)),
+  listPostsRequest: (data) => dispatch(listPostsRequest(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPosts);

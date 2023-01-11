@@ -1,37 +1,37 @@
 import {
-  GET_USERS_REQUEST,
-  GET_USERS_SUCCESS,
-  GET_USERS_FAILURE,
+  LIST_POSTS_REQUEST,
+  LIST_POSTS_SUCCESS,
+  LIST_POSTS_FAILURE,
 } from "./type";
 
 const initialState = {
-  allUser: [],
+  listPosts: [],
   loading: false,
   error: null,
 };
 
-export default function users(state = initialState, action) {
+export default function ListPosts(state = initialState, action) {
   switch (action.type) {
-  
-    case GET_USERS_REQUEST:
+    case LIST_POSTS_REQUEST:
       return {
         ...state,
         loading: true,
       };
 
-    case GET_USERS_SUCCESS:
+    case LIST_POSTS_SUCCESS:
       return {
         ...state,
         loading: false,
-        allUser: action.data,
+        listPosts: action.data,
       };
 
-    case GET_USERS_FAILURE:
+    case LIST_POSTS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
+
     default:
       return state;
   }

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getCategory } from "./PostsCategoriesPost/redux/actions";
-import { getPostCategory } from "./PostCategories/redux/actions";
+import { addPostCategoryRequest } from "./AddPostCategory/redux/actions";
+import { listPostsRequest } from "./ListPosts/redux/actions";
 
 const Add = (props) => {
-  const { getCategory,  PostData, GetPostListData, getPostCategory } = props;
-  // console.log("PostData=>", PostData);
-  // console.log("GetPostListData ===================>", GetPostListData)
+  const {
+    addPostCategoryRequest,
+    PostData,
+    GetPostListData,
+    listPostsRequest,
+  } = props;
+
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
@@ -21,18 +25,23 @@ const Add = (props) => {
         title: filter,
       },
       sort: [sort],
-    }
+    };
     event.preventDefault();
-    getCategory(data)
+    addPostCategoryRequest(data);
   };
 
   const GetPostListCategoryData = () => {
-    getPostCategory()
-  }
+    listPostsRequest();
+  };
 
   return (
     <div>
-      <h3 className="display-8 fw-normal" style={{ marginLeft: 80, marginRight: 80 }}>WIX Category</h3>
+      <h3
+        className="display-8 fw-normal"
+        style={{ marginLeft: 80, marginRight: 80 }}
+      >
+        WIX Category
+      </h3>
       <p style={{ marginLeft: 80, marginRight: 80 }}>
         <button
           type="button"
@@ -47,7 +56,7 @@ const Add = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(JSON.stringify(GetPostListData?.data?.posts))}
+          value={JSON.stringify(GetPostListData?.data?.posts, undefined, 4)}
         />
       </p>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
@@ -95,21 +104,20 @@ const Add = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(PostData?.data?.categories)}
+          value={JSON.stringify(PostData?.data?.categories, undefined, 4)}
         />
       </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.postscategoriesReducer.allPosts,
-  GetPostListData: state.postslistcategory.allCategoryList,
+  PostData: state.postCategory,
+  GetPostListData: state.listPosts,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCategory: (data) => dispatch(getCategory(data)),
-  getPostCategory: (data) => dispatch(getPostCategory(data)),
-
+  addPostCategoryRequest: (data) => dispatch(addPostCategoryRequest(data)),
+  listPostsRequest: (data) => dispatch(listPostsRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add);

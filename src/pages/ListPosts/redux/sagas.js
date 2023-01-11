@@ -1,9 +1,10 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import { GET_POST_CATEGORY_REQUEST } from "./type";
+import { LIST_POSTS_REQUEST } from "./type";
 import { BASE_URL } from "../../../config/app";
 import XHR from "../../../utils/XHR";
-import { getPostCategorySuccess, getPostCategoryFailure } from "./actions";
-async function getPostApi() {
+import { listPostsSuccess, listPostsFailure } from "./actions";
+
+async function listPostsApi() {
   const URL = `${BASE_URL}/list_posts/`;
   const options = {
     headers: {
@@ -16,14 +17,14 @@ async function getPostApi() {
   return XHR(URL, options);
 }
 
-function* fetchPostList() {
+function* listPosts() {
   try {
-    const listPost = yield call(getPostApi);
+    const listPost = yield call(listPostsApi);
     console.log("List Post category", listPost);
-    yield put(getPostCategorySuccess(listPost));
+    yield put(listPostsSuccess(listPost));
   } catch (e) {
-    yield put(getPostCategoryFailure(e));
+    yield put(listPostsFailure(e));
   }
 }
 
-export default all([takeLatest(GET_POST_CATEGORY_REQUEST, fetchPostList)]);
+export default all([takeLatest(LIST_POSTS_REQUEST, listPosts)]);

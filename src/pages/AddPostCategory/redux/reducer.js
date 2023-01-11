@@ -1,42 +1,37 @@
 import {
-  POST_CATEGORY_REQUEST,
-  POST_CATEGORY_SUCCESS,
-  POST_CATEGORY_FAILURE,
+  ADD_POST_CATEGORY_REQUEST,
+  ADD_POST_CATEGORY_SUCCESS,
+  ADD_POST_CATEGORY_FAILURE,
 } from "./type";
 
 const initialState = {
-  categoryData: [],
+  postCategory: [],
   loading: false,
   error: null,
 };
 
-export default function AddPostsCategoriesReducer(
-  state = initialState,
-  action
-) {
-  
+export default function addPostcategoryReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_CATEGORY_REQUEST:
+    case ADD_POST_CATEGORY_REQUEST:
       return {
         ...state,
         loading: true,
-        categoryData: [],
+        postCategory: [],
       };
 
-    case POST_CATEGORY_SUCCESS:
+    case ADD_POST_CATEGORY_SUCCESS:
       return {
         ...state,
         loading: false,
-        categoryData: action.data,
+        postCategory: action.data,
       };
 
-    case POST_CATEGORY_FAILURE:
+    case ADD_POST_CATEGORY_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
-
     default:
       return state;
   }

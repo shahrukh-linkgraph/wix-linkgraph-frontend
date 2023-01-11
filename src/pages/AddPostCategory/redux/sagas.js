@@ -1,11 +1,11 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import { GET_CATEGORY_REQUEST } from "./type";
+import { ADD_POST_CATEGORY_REQUEST } from "./type";
 import { BASE_URL } from "../../../config/app";
 import XHR from "../../../utils/XHR";
-import { getCategorySuccess, getCategoryFailure } from "./actions";
+import { addPostCategorySuccess, addPostCategoryFailure } from "./actions";
 //category
 
-async function postApi(data) {
+async function addPostCategoryApi(data) {
   console.log("post api data", data);
   const URL = `${BASE_URL}/post_categories/`;
   const options = {
@@ -20,15 +20,15 @@ async function postApi(data) {
   return XHR(URL, options);
 }
 
-function* fetchCategory({ data }) {
+function* addPostCategory({ data }) {
   console.log("[post", data);
   try {
-    const resoponse = yield call(postApi, data);
-    yield put(getCategorySuccess(resoponse));
+    const resoponse = yield call(addPostCategoryApi, data);
+    yield put(addPostCategorySuccess(resoponse));
     console.log("Response....", resoponse);
   } catch (e) {
-    yield put(getCategoryFailure(e));
+    yield put(addPostCategoryFailure(e));
   }
 }
 
-export default all([takeLatest(GET_CATEGORY_REQUEST, fetchCategory)]);
+export default all([takeLatest(ADD_POST_CATEGORY_REQUEST, addPostCategory)]);

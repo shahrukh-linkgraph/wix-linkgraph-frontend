@@ -1,13 +1,8 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import {
-  POST_LOGIN_USER_REQUEST,
-} from "./type";
-// import { BASE_URL } from "../../../config/app";
+import { POST_LOGIN_USER_REQUEST } from "./type";
+
 import XHR from "../../../utils/XHR";
-import {
-  PostLoginUserSuccess,
-  PostLoginUserFailure,
-} from "./actions";
+import { PostLoginUserSuccess, PostLoginUserFailure } from "./actions";
 
 async function PostLoginUserApi(data) {
   console.log("PostLoginUserRequest", data);
@@ -15,7 +10,6 @@ async function PostLoginUserApi(data) {
   const options = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `token 005a17d69c332ee70c3620c12608d42ba7e1b52f`,
     },
     method: "POST",
     data,
@@ -25,18 +19,14 @@ async function PostLoginUserApi(data) {
 }
 
 function* PostLoginUser({ data }) {
-  // console.log("fetchPostCreateCategory", data);
   try {
     const userlogin = yield call(PostLoginUserApi, data);
-    // console.log("userlogin....", userlogin);
-    localStorage.setItem("JWT Token",userlogin?.data?.token)
+    localStorage.setItem("jwtToken", userlogin?.data?.token);
     yield put(PostLoginUserSuccess(userlogin));
   } catch (e) {
-    console.log('error', e);
+    console.log("login_error", e);
     yield put(PostLoginUserFailure(e));
   }
 }
 
-export default all([
-  takeLatest(POST_LOGIN_USER_REQUEST, PostLoginUser),
-]);
+export default all([takeLatest(POST_LOGIN_USER_REQUEST, PostLoginUser)]);

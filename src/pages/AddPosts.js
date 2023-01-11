@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import { getUsers } from "../pages/AddCategories/redux/actions";
-import { PostCategory } from "../pages/AddPostsCategories/redux/actions";
+import { listCategoriesRequest } from "./ListCategory/redux/actions";
+import { addCategoryRequest } from "./AddCategory/redux/actions";
+
 const AddPosts = (props) => {
-  const { PostCategory, categoryData, UserData, getUsers } =
+  const { addCategoryRequest, categoryData, UserData, listCategoriesRequest } =
     props;
 
   // console.log("PostCreateListData =>", PostCreateListData);
@@ -32,10 +33,10 @@ const AddPosts = (props) => {
     };
 
     event.preventDefault();
-    PostCategory(data);
+    addCategoryRequest(data);
   };
   const getDataFromApi = () => {
-    getUsers();
+    listCategoriesRequest();
   };
 
   return (
@@ -60,7 +61,7 @@ const AddPosts = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(UserData?.data?.categories)}
+          value={JSON.stringify(UserData?.data?.categories, undefined, 4)}
         />
       </p>
 
@@ -158,20 +159,20 @@ const AddPosts = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(categoryData?.data?.categories)}
+          value={JSON.stringify(categoryData?.data?.categories, undefined, 4)}
         />
       </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostCreateListData: state.AddPostsCategoriesReducer.PostCreateListData,
-  UserData: state.users.allUser,
+  PostCreateListData: state.category,
+  UserData: state.categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  PostCategory: (data) => dispatch(PostCategory(data)),
-  getUsers: (data) => dispatch(getUsers(data)),
+  addCategoryRequest: (data) => dispatch(addCategoryRequest(data)),
+  listCategoriesRequest: (data) => dispatch(listCategoriesRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPosts);

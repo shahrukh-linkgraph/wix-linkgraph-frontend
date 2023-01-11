@@ -1,17 +1,9 @@
 import React from "react";
-
 import { connect } from "react-redux";
-import { Table } from "react-bootstrap";
-import { getUsers } from "./redux/actions";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "react-bootstrap";
-import { listCategoriesRequest } from "../../../ListCategory/redux/actions";
-function AddPostCategory(props) {
-  const { UserData, listCategoriesRequest } = props;
+import { listCategoriesRequest } from "./redux/actions";
 
-  console.log("UserData......", UserData);
-  // console.log("UserData......>>>>>>>>>>>>>>>>>>", UserData?.data?.categories);
+function ListCategory(props) {
+  const { UserData, listCategoriesRequest } = props;
 
   const getDataFromApi = () => {
     listCategoriesRequest();
@@ -30,11 +22,6 @@ function AddPostCategory(props) {
             >
               Get List Category
             </button>
-            <Link to={`/Add/`}>
-              <button type="button" className="btn btn-primary">
-                Add Category
-              </button>
-            </Link>
           </p>
           <p>
             <textarea
@@ -58,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
   listCategoriesRequest: (data) => dispatch(listCategoriesRequest(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPostCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(ListCategory);

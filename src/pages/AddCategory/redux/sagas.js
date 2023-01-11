@@ -1,17 +1,10 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import {
-  POST_CATEGORY_REQUEST,
-} from "./type";
-// import { BASE_URL } from "../../../../../config/app";
+import { ADD_CATEGORY_REQUEST } from "./type";
 import { BASE_URL } from "../../../config/app";
-// import XHR from "../../../../../utils/XHR";
 import XHR from "../../../utils/XHR";
-import {
-  PostCategorySuccess,
-  PostCategoryFailure,
-} from "./actions";
-//Post Create Category Post
-async function postCreateApi(data) {
+import { addCategorySuccess, addCategoryFailure } from "./actions";
+
+async function addCategoryApi(data) {
   console.log("post create api data", data);
   const URL = `${BASE_URL}/create_categories/`;
   const options = {
@@ -26,18 +19,15 @@ async function postCreateApi(data) {
   return XHR(URL, options);
 }
 
-function* fetchPostCreateCategory({ data }) {
+function* addCategory({ data }) {
   console.log("fetchPostCreateCategory", data);
   try {
-    const PostsCategory = yield call(postCreateApi, data);
+    const PostsCategory = yield call(addCategoryApi, data);
     console.log("Post Create Category....", PostsCategory);
-    yield put(PostCategorySuccess(PostsCategory));
+    yield put(addCategorySuccess(PostsCategory));
   } catch (e) {
-    yield put(PostCategoryFailure(e));
+    yield put(addCategoryFailure(e));
   }
 }
 
-export default all([
-  takeLatest(POST_CATEGORY_REQUEST, fetchPostCreateCategory),
-])
-
+export default all([takeLatest(ADD_CATEGORY_REQUEST, addCategory)]);

@@ -1,38 +1,36 @@
 import {
-  GET_POST_CATEGORY_REQUEST,
-  GET_POST_CATEGORY_SUCCESS,
-  GET_POST_CATEGORY_FAILURE,
+  LIST_CATEGORIES_REQUEST,
+  LIST_CATEGORIES_SUCCESS,
+  LIST_CATEGORIES_FAILURE,
 } from "./type";
 
 const initialState = {
-  allCategoryList: [],
+  categories: [],
   loading: false,
   error: null,
 };
 
-export default function postslistcategory(state = initialState, action) {
-
+export default function listCategoryReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_POST_CATEGORY_REQUEST:
+    case LIST_CATEGORIES_REQUEST:
       return {
         ...state,
         loading: true,
       };
 
-    case GET_POST_CATEGORY_SUCCESS:
+    case LIST_CATEGORIES_SUCCESS:
       return {
         ...state,
         loading: false,
-        allCategoryList: action.data,
+        categories: action.data,
       };
 
-    case GET_POST_CATEGORY_FAILURE:
+    case LIST_CATEGORIES_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
-
     default:
       return state;
   }
