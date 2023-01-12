@@ -33,8 +33,8 @@ const AddCategory = (props) => {
   };
 
   return (
-    
-      <Form style={{ marginLeft: 160, marginRight: 160 }}>
+    <Container>
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Category</h1>
           <Form.Label>Label</Form.Label>
@@ -73,7 +73,8 @@ const AddCategory = (props) => {
         <Form.Group className="mb-3" controlId="formBasicRollNo">
           <Form.Label>DisplayPosition</Form.Label>
           <Form.Control
-            type="text"            placeholder="DisplayPosition"
+            type="text"
+            placeholder="DisplayPosition"
             name="DisplayPosition"
             onChange={(e) => setDisplayPosition(parseInt(e.target.value))}
             value={displayPosition}
@@ -128,13 +129,17 @@ const AddCategory = (props) => {
             type="text"
             as={"textarea"}
             name="CategoryData"
-            value={JSON.stringify(PostCreateListData?.category?.data?.category, undefined, 4)}
-            style={{ height: "300px" }}
+            value={JSON.stringify(
+              PostCreateListData?.category?.data?.category,
+              undefined,
+              4
+            )}
+            style={{ height: "200px" }}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
       </Form>
-    
+    </Container>
   );
 };
 const mapStateToProps = (state) => ({

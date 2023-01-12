@@ -3,7 +3,6 @@ import { ADD_POST_CATEGORY_REQUEST } from "./type";
 import { BASE_URL } from "../../../config/app";
 import XHR from "../../../utils/XHR";
 import { addPostCategorySuccess, addPostCategoryFailure } from "./actions";
-//category
 
 async function addPostCategoryApi(data) {
   console.log("post api data", data);

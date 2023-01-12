@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { listCategoriesRequest } from "./redux/actions";
 
@@ -8,35 +8,37 @@ function ListCategory(props) {
 
   // console.log("UserData>>>>>>>>>>>>>>>>>>>>>>", UserData);
 
-  const getDataFromApi = () => {
+  const getDataFromApi = (event) => {
+    event.preventDefault();
     listCategoriesRequest();
   };
 
   return (
-    
-      <div className="pb-5">
-        <div className="col-sm-10 py-2 mx-auto">
-          <h3 className="display-8 fw-normal" style={{marginTop:30}}>WIX Category</h3>
-          <p style={{ display: "flex", justifyContent: "space-between" }}>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={getDataFromApi}
-            >
-              Get List Category
-            </button>
-          </p>
-          <p>
-            <textarea
-              className="form-control"
-              rows="6"
-              aria-label="With textarea"
-              value={JSON.stringify(UserData?.categories?.data?.categories, undefined, 4)}
-            />
-          </p>
-        </div>
-      </div>
-    
+    <Container className="pt-4 pb-5">
+      <Form>
+        <Form.Group className="mb-3">
+          <h1> WIX Categories</h1>
+          <Button variant="primary" type="submit" onClick={getDataFromApi}>
+            GET Categories
+          </Button>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label></Form.Label>
+          <Form.Control
+            type="text"
+            as={"textarea"}
+            name="PostData"
+            defaultValue={JSON.stringify(
+              UserData?.categories?.data?.categories,
+              undefined,
+              4
+            )}
+            style={{ height: "200px" }}
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 }
 

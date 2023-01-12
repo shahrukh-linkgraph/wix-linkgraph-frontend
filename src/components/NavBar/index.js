@@ -61,7 +61,7 @@ const NavBar = () => {
               Dashboard
             </Link>
             <Link
-              to="/add"
+              to="/posts"
               style={{
                 color: "white",
                 textDecoration: "none",
@@ -71,14 +71,14 @@ const NavBar = () => {
               Posts
             </Link>
             <Link
-              to="/addposts"
+              to="/categories"
               style={{
                 color: "white",
                 textDecoration: "none",
                 padding: "10px",
               }}
             >
-             Categories
+              Categories
             </Link>
           </Nav>
         </Navbar.Collapse>

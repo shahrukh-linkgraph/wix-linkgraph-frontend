@@ -1,5 +1,6 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import { POST_LOGIN_USER_REQUEST } from "./type";
+import { createBrowserHistory } from "history";
 
 import XHR from "../../../utils/XHR";
 import { PostLoginUserSuccess, PostLoginUserFailure } from "./actions";
@@ -19,10 +20,14 @@ async function PostLoginUserApi(data) {
 }
 
 function* PostLoginUser({ data }) {
+  const history = createBrowserHistory();
+
   try {
     const userlogin = yield call(PostLoginUserApi, data);
     localStorage.setItem("jwtToken", userlogin?.data?.token);
     yield put(PostLoginUserSuccess(userlogin));
+    history.push("/dashboard");
+    window.location.reload();
   } catch (e) {
     console.log("login_error", e);
     yield put(PostLoginUserFailure(e));

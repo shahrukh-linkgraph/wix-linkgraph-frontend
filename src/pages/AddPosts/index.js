@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addPostCategoryRequest } from "./redux/actions";
 
-const AddPostCategories = (props) => {
-  const {
-    addPostCategoryRequest,
-    allPosts,
-    PostData,
-    GetPostListData,
-    getPostCategory,
-  } = props;
+const AddPosts = (props) => {
+  const { addPostCategoryRequest, PostData } = props;
 
-  console.log("PostData=========================>", PostData?.postCategory?.data?.draftPost);
+  // console.log("PostData========", PostData?.postCategory?.data?.draftPost);
 
   const [title, setTitle] = useState("");
   const [memberId, setMemberId] = useState("");
@@ -22,26 +16,21 @@ const AddPostCategories = (props) => {
   const AddCategoryDetail = (event) => {
     const data = {
       draftPost: {
-        title:title,
-        memberId:memberId
+        title: title,
+        memberId: memberId,
       },
       excerpt: excerpt,
-      fieldsets: [URL]
+      fieldsets: [URL],
     };
     event.preventDefault();
     addPostCategoryRequest(data);
   };
 
-  const GetPostListCategoryData = () => {
-    getPostCategory();
-  };
-
   return (
-    <div>
-      
-      <Form style={{ marginLeft: 160, marginRight: 160 }}>
+    <Container>
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicName">
-          <h1> Add Posts</h1>
+          <h1> Add Post</h1>
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
@@ -87,27 +76,33 @@ const AddPostCategories = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
         <Button variant="primary" type="submit" onClick={AddCategoryDetail}>
-          Add Categories
+          Add Post
         </Button>
+        <Form.Group className="mb-3" controlId="formBasicRollNo">
+          <Form.Label></Form.Label>
+          <Form.Control
+            type="text"
+            as={"textarea"}
+            name="PostData"
+            value={JSON.stringify(
+              PostData?.postCategory?.data?.draftPost,
+              undefined,
+              4
+            )}
+            style={{ height: "200px" }}
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
       </Form>
-      <p style={{ marginLeft: 160, marginRight:160, marginTop:20 }}>
-        <textarea
-          className="form-control"
-          rows="6"
-          aria-label="With textarea"
-          value={JSON.stringify(PostData?.postCategory?.data?.draftPost, undefined, 4)}
-        />
-      </p>
-    </div>
+    </Container>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.addPostcategoryReducer
+  PostData: state.addPostcategoryReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addPostCategoryRequest: (data) => dispatch(addPostCategoryRequest(data)),
-  // getPostCategory: (data) => dispatch(getPostCategory(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPostCategories);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPosts);
