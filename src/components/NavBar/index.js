@@ -68,7 +68,7 @@ const NavBar = () => {
                 padding: "10px",
               }}
             >
-              Categories
+              Posts
             </Link>
             <Link
               to="/addposts"
@@ -78,7 +78,7 @@ const NavBar = () => {
                 padding: "10px",
               }}
             >
-              Posts
+             Categories
             </Link>
           </Nav>
         </Navbar.Collapse>

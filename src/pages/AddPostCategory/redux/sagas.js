@@ -7,7 +7,7 @@ import { addPostCategorySuccess, addPostCategoryFailure } from "./actions";
 
 async function addPostCategoryApi(data) {
   console.log("post api data", data);
-  const URL = `${BASE_URL}/post_categories/`;
+  const URL = `${BASE_URL}/create_draft_post/`;
   const options = {
     headers: {
       "Content-Type": "application/json",

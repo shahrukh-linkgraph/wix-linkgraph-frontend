@@ -33,8 +33,8 @@ const AddCategory = (props) => {
   };
 
   return (
-    <Container>
-      <Form style={{ marginLeft: 80, marginRight: 80 }}>
+    
+      <Form style={{ marginLeft: 160, marginRight: 160 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Category</h1>
           <Form.Label>Label</Form.Label>
@@ -134,7 +134,7 @@ const AddCategory = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
       </Form>
-    </Container>
+    
   );
 };
 const mapStateToProps = (state) => ({

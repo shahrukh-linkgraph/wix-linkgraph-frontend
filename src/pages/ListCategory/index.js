@@ -13,10 +13,10 @@ function ListCategory(props) {
   };
 
   return (
-    <Container>
-      <div className="bg-light rounded">
+    
+      <div className="pb-5">
         <div className="col-sm-10 py-2 mx-auto">
-          <h3 className="display-8 fw-normal">WIX Category</h3>
+          <h3 className="display-8 fw-normal" style={{marginTop:30}}>WIX Category</h3>
           <p style={{ display: "flex", justifyContent: "space-between" }}>
             <button
               type="button"
@@ -36,7 +36,7 @@ function ListCategory(props) {
           </p>
         </div>
       </div>
-    </Container>
+    
   );
 }
 

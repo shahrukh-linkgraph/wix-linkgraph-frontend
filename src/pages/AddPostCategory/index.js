@@ -12,21 +12,21 @@ const AddPostCategories = (props) => {
     getPostCategory,
   } = props;
 
-  // console.log("PostData=>", PostData);
+  console.log("PostData=========================>", PostData?.postCategory?.data?.draftPost);
 
-  const [pagging, setPagging] = useState("");
-  const [filter, setFilter] = useState("");
-  const [sort, setSort] = useState("");
+  const [title, setTitle] = useState("");
+  const [memberId, setMemberId] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [fieldsets, setFieldsets] = useState("");
 
   const AddCategoryDetail = (event) => {
     const data = {
-      paging: {
-        limit: pagging,
+      draftPost: {
+        title:title,
+        memberId:memberId
       },
-      filter: {
-        title: filter,
-      },
-      sort: [sort],
+      excerpt: excerpt,
+      fieldsets: [URL]
     };
     event.preventDefault();
     addPostCategoryRequest(data);
@@ -38,39 +38,51 @@ const AddPostCategories = (props) => {
 
   return (
     <div>
-      <Form style={{ marginLeft: 80, marginRight: 80 }}>
+      
+      <Form style={{ marginLeft: 160, marginRight: 160 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
-          <h1> Add Categories</h1>
-          <Form.Label>Paging</Form.Label>
+          <h1> Add Posts</h1>
+          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Paging"
-            name="Paging"
-            onChange={(e) => setPagging(e.target.value)}
-            value={pagging}
+            placeholder="Title"
+            name="Title"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicClass">
-          <Form.Label>Filter</Form.Label>
+          <Form.Label>MemberId</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Filter"
-            name="Filter"
-            onChange={(e) => setFilter(e.target.value)}
-            value={filter}
+            placeholder="MemberId"
+            name="MemberId"
+            onChange={(e) => setMemberId(e.target.value)}
+            value={memberId}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicRollNo">
-          <Form.Label>Sort</Form.Label>
+          <Form.Label>Excerpt</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Sort"
-            name="Sort"
-            onChange={(e) => setSort(e.target.value)}
-            value={sort}
+            placeholder="Excerpt"
+            name="Excerpt"
+            onChange={(e) => setExcerpt(e.target.value)}
+            value={excerpt}
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicRollNo">
+          <Form.Label>Fieldsets</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Fieldsets"
+            name="Fieldsets"
+            onChange={(e) => setFieldsets(e.target.value)}
+            value={fieldsets}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -78,12 +90,12 @@ const AddPostCategories = (props) => {
           Add Categories
         </Button>
       </Form>
-      <p style={{ margin: 70 }}>
+      <p style={{ marginLeft: 160, marginRight:160, marginTop:20 }}>
         <textarea
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(PostData?.postCategory?.data?.categories, undefined, 4)}
+          value={JSON.stringify(PostData?.postCategory?.data?.draftPost, undefined, 4)}
         />
       </p>
     </div>
