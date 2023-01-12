@@ -1,49 +1,41 @@
 import React from "react";
-import { Navbar, Container, Nav, NavLink } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container fluid={true}>
-          <Navbar.Brand href="#home">
-            <img
-              width="161"
-              height="37"
-              src="https://linkgraph.io/wp-content/themes/linkgraph-new/img/header/logo.svg"
-              alt="LinkGraph Logo"
-              itemProp="logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">
-                Grow your Revenue through Transparent & Results-Driven SEO
-              </Nav.Link>
-            </Nav>
-            <Nav>
-              <NavLink as={Link} to="/categories">
-                Categories
-              </NavLink>
-              <NavLink as={Link} to="/home">
-                Posts
-              </NavLink>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">LinkGraph</Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container fluid={true}>
+        <Navbar.Brand href="#home">
+          <img
+            width="161"
+            height="37"
+            src="https://linkgraph.io/wp-content/themes/linkgraph-new/img/header/logo.svg"
+            alt="LinkGraph Logo"
+            itemProp="logo"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Link
               to="/"
               style={{
                 color: "white",
                 textDecoration: "none",
-                padding: "20px",
+                padding: "10px",
+              }}
+            >
+              Grow your Revenue through Transparent & Results-Driven SEO
+            </Link>
+          </Nav>
+          <Nav>
+            <Link
+              to="/"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                padding: "10px",
               }}
             >
               Home
@@ -53,7 +45,7 @@ const NavBar = () => {
               style={{
                 color: "white",
                 textDecoration: "none",
-                padding: "20px",
+                padding: "10px",
               }}
             >
               Login
@@ -63,7 +55,7 @@ const NavBar = () => {
               style={{
                 color: "white",
                 textDecoration: "none",
-                padding: "20px",
+                padding: "10px",
               }}
             >
               Dashboard
@@ -73,25 +65,25 @@ const NavBar = () => {
               style={{
                 color: "white",
                 textDecoration: "none",
-                padding: "20px",
+                padding: "10px",
               }}
             >
-              Add Categories
+              Categories
             </Link>
             <Link
               to="/addposts"
               style={{
                 color: "white",
                 textDecoration: "none",
-                padding: "20px",
+                padding: "10px",
               }}
             >
-              Add Posts Categories
+              Posts
             </Link>
           </Nav>
-        </Container>
-      </Navbar>
-    </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

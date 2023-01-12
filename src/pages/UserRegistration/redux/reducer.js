@@ -1,32 +1,32 @@
 import {
-  ADD_MEMBER_REGISTER,
- ADD_MEMBER_REGISTER_SUCCESS,
- ADD_MEMBER_REGISTER_FAILURE
+  USER_REGISTRATION_REQUEST,
+  USER_REGISTRATION_SUCCESS,
+  USER_REGISTRATION_FAILURE,
 } from "./type";
 
 const initialState = {
-  addMember: [],
+  data: [],
   loading: false,
   error: null,
 };
 
 export default function addRegisterReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_MEMBER_REGISTER:
+    case USER_REGISTRATION_REQUEST:
       return {
         ...state,
         loading: true,
-        addMember: [],
+        data: [],
       };
 
-    case ADD_MEMBER_REGISTER_SUCCESS:
+    case USER_REGISTRATION_SUCCESS:
       return {
         ...state,
         loading: false,
-        addMember: action.data,
+        data: action.data,
       };
 
-    case ADD_MEMBER_REGISTER_FAILURE:
+    case USER_REGISTRATION_FAILURE:
       return {
         ...state,
         loading: false,

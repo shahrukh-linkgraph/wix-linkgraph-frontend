@@ -9,7 +9,7 @@ async function addCategoryApi(data) {
   const URL = `${BASE_URL}/create_categories/`;
   const options = {
     headers: {
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
       Authorization: `token 005a17d69c332ee70c3620c12608d42ba7e1b52f`,
     },
     method: "POST",
@@ -20,7 +20,6 @@ async function addCategoryApi(data) {
 }
 
 function* addCategory({ data }) {
-  console.log("fetchPostCreateCategory", data);
   try {
     const PostsCategory = yield call(addCategoryApi, data);
     console.log("Post Create Category....", PostsCategory);

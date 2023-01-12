@@ -1,21 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
-// import { PostCategory } from "./Home/components/Categories/redux/actions";
 import { addCategoryRequest } from "./redux/actions";
-import { Link } from "react-router-dom";
-// import { getUsers } from "./Home/components/Categories/redux/actions";
-// import { getUsers } from "../AddCategories/redux/actions";
 
 const AddCategory = (props) => {
-  const {
-    PostCreateListData,
-    addCategoryRequest,
-    category,
-    UserData,
-    getUsers,
-  } = props;
+  const { PostCreateListData, addCategoryRequest } = props;
 
   // console.log("PostCreateListData =======================>", PostCreateListData?.data);
   const [label, setLabel] = useState("");
@@ -43,39 +32,11 @@ const AddCategory = (props) => {
     addCategoryRequest(data);
   };
 
-  const getDataFromApi = () => {
-    getUsers();
-  };
-
   return (
-    <div>
-      <h3
-        className="display-8 fw-normal"
-        style={{ marginLeft: 80, marginRight: 80 }}
-      >
-        WIX Category (Post Payload)
-      </h3>
-      <p style={{ marginLeft: 80, marginRight: 80 }}>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={getDataFromApi}
-        >
-          Get List Category
-        </button>
-      </p>
-      <p style={{ marginLeft: 80, marginRight: 80 }}>
-        <textarea
-          className="form-control"
-          rows="6"
-          aria-label="With textarea"
-          value={JSON.stringify(UserData?.data?.categories)}
-        />
-      </p>
-
+    <Container>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
-          <h1> Add Posts Categories</h1>
+          <h1> Add Category</h1>
           <Form.Label>Label</Form.Label>
           <Form.Control
             type="text"
@@ -154,29 +115,35 @@ const AddCategory = (props) => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
-        {/* <Button variant="primary" type="submit" onClick={AddPostsCategoryDetail}>
-          Add Posts Categories
-        </Button> */}
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={AddPostsCategoryDetail}
+        >
+          Add Category
+        </Button>
+
+        <Form.Group className="mb-3" controlId="formBasicRollNo">
+          <Form.Label></Form.Label>
+          <Form.Control
+            type="text"
+            as={"textarea"}
+            name="CategoryData"
+            value={JSON.stringify(PostCreateListData?.data?.categories)}
+            style={{ height: "300px" }}
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
       </Form>
-      {/* <p style={{ margin: 70 }}>
-        <textarea
-          className="form-control"
-          rows="6"
-          aria-label="With textarea"
-          value={JSON.stringify(categoryData?.data?.categories)}
-        />
-      </p> */}
-    </div>
+    </Container>
   );
 };
 const mapStateToProps = (state) => ({
   PostCreateListData: state.AddCategorYReducer,
-  //   UserData: state.users.allUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addCategoryRequest: (data) => dispatch(addCategoryRequest(data)),
-  //   getUsers: (data) => dispatch(getUsers(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);

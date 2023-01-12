@@ -21,11 +21,10 @@ const LoginLinkGraph = (props) => {
 
   return (
     <div>
-      <Container fluid>
-        <Row className="pt-5">
-          <Col xs={4}></Col>
-          <Col xs={4}>
-            <Form style={{ marginLeft: 80, marginRight: 80 }}>
+      <Container className="pt-5">
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <Form>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <h1> Login</h1>
                 <Form.Label>Email</Form.Label>
@@ -42,7 +41,7 @@ const LoginLinkGraph = (props) => {
               <Form.Group className="mb-3" controlId="formBasicClass">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   name="Password"
                   onChange={(e) => setPassword(e.target.value)}
@@ -55,7 +54,6 @@ const LoginLinkGraph = (props) => {
               </Button>
             </Form>
           </Col>
-          <Col xs={4}></Col>
         </Row>
       </Container>
     </div>

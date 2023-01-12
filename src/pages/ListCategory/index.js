@@ -1,16 +1,19 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { listCategoriesRequest } from "./redux/actions";
 
 function ListCategory(props) {
   const { UserData, listCategoriesRequest } = props;
 
+  // console.log("list-categories", UserData?.data?.categories);
+
   const getDataFromApi = () => {
     listCategoriesRequest();
   };
 
   return (
-    <div>
+    <Container>
       <div className="bg-light rounded">
         <div className="col-sm-10 py-2 mx-auto">
           <h3 className="display-8 fw-normal">WIX Category</h3>
@@ -33,12 +36,12 @@ function ListCategory(props) {
           </p>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 
 const mapStateToProps = (state) => ({
-  UserData: state.categories,
+  UserData: state.listCategoryReducer.categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({
