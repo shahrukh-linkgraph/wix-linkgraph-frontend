@@ -6,7 +6,7 @@ import { addCategoryRequest } from "./redux/actions";
 const AddCategory = (props) => {
   const { PostCreateListData, addCategoryRequest } = props;
 
-  // console.log("PostCreateListData =======================>", PostCreateListData?.data);
+  // console.log("PostCreateListData =======================>", PostCreateListData?.category?.data?.category);
   const [label, setLabel] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -73,10 +73,9 @@ const AddCategory = (props) => {
         <Form.Group className="mb-3" controlId="formBasicRollNo">
           <Form.Label>DisplayPosition</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="DisplayPosition"
+            type="text"            placeholder="DisplayPosition"
             name="DisplayPosition"
-            onChange={(e) => setDisplayPosition(e.target.value)}
+            onChange={(e) => setDisplayPosition(parseInt(e.target.value))}
             value={displayPosition}
           />
           <Form.Text className="text-muted"></Form.Text>
@@ -129,7 +128,7 @@ const AddCategory = (props) => {
             type="text"
             as={"textarea"}
             name="CategoryData"
-            value={JSON.stringify(PostCreateListData?.data?.categories)}
+            value={JSON.stringify(PostCreateListData?.category?.data?.category, undefined, 4)}
             style={{ height: "300px" }}
           />
           <Form.Text className="text-muted"></Form.Text>

@@ -12,7 +12,7 @@ const AddPostCategories = (props) => {
     getPostCategory,
   } = props;
 
-  console.log("PostData=>", PostData);
+  // console.log("PostData=>", PostData);
 
   const [pagging, setPagging] = useState("");
   const [filter, setFilter] = useState("");
@@ -38,29 +38,6 @@ const AddPostCategories = (props) => {
 
   return (
     <div>
-      <h3
-        className="display-8 fw-normal"
-        style={{ marginLeft: 80, marginRight: 80 }}
-      >
-        WIX Category
-      </h3>
-      <p style={{ marginLeft: 80, marginRight: 80 }}>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={GetPostListCategoryData}
-        >
-          Get List Category
-        </button>
-      </p>
-      <p style={{ marginLeft: 80, marginRight: 80 }}>
-        <textarea
-          className="form-control"
-          rows="6"
-          aria-label="With textarea"
-          value={JSON.stringify(GetPostListData?.data?.posts, undefined, 4)}
-        />
-      </p>
       <Form style={{ marginLeft: 80, marginRight: 80 }}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <h1> Add Categories</h1>
@@ -106,14 +83,14 @@ const AddPostCategories = (props) => {
           className="form-control"
           rows="6"
           aria-label="With textarea"
-          value={JSON.stringify(PostData?.data?.categories, undefined, 4)}
+          value={JSON.stringify(PostData?.postCategory?.data?.categories, undefined, 4)}
         />
       </p>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  PostData: state.users.allPosts,
+  PostData: state.addPostcategoryReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({

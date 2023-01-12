@@ -6,7 +6,7 @@ import { listCategoriesRequest } from "./redux/actions";
 function ListCategory(props) {
   const { UserData, listCategoriesRequest } = props;
 
-  // console.log("list-categories", UserData?.data?.categories);
+  // console.log("UserData>>>>>>>>>>>>>>>>>>>>>>", UserData);
 
   const getDataFromApi = () => {
     listCategoriesRequest();
@@ -31,7 +31,7 @@ function ListCategory(props) {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-              value={JSON.stringify(UserData?.data?.categories, undefined, 4)}
+              value={JSON.stringify(UserData?.categories?.data?.categories, undefined, 4)}
             />
           </p>
         </div>
@@ -41,7 +41,7 @@ function ListCategory(props) {
 }
 
 const mapStateToProps = (state) => ({
-  UserData: state.listCategoryReducer.categories,
+  UserData: state.listCategoryReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({

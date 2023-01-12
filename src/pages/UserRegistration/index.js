@@ -5,7 +5,7 @@ import { userRegistrationRequest } from "./redux/actions";
 
 const AddMember = (props) => {
   const { AddRegistration, userRegistrationRequest } = props;
-  // console.log("user-registration", AddRegistration?.data?.message);
+  // console.log("user-registration", AddRegistration);
 
   const [id, setId] = useState("");
   const [validation, setValidation] = useState("");

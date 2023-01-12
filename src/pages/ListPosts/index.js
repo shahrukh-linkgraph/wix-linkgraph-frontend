@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ListPosts(props) {
   const { GetPostListData, listPostsRequest } = props;
 
-  console.log("GetPostListData>>>>>>", GetPostListData);
+  // console.log("GetPostListData>>>>>>", GetPostListData?.listPosts?.data?.posts);
   const GetPostListCategoryData = () => {
     listPostsRequest();
   };
@@ -31,7 +31,7 @@ function ListPosts(props) {
               className="form-control"
               rows="6"
               aria-label="With textarea"
-              value={JSON.stringify(GetPostListData, undefined, 4)}
+              value={JSON.stringify(GetPostListData?.listPosts?.data?.posts, undefined, 4)}
             />
           </p>
         </div>
@@ -41,7 +41,7 @@ function ListPosts(props) {
 }
 
 const mapStateToProps = (state) => ({
-  GetPostListData: state.users.allCategoryList,
+  GetPostListData: state.ListPosts
 });
 
 const mapDispatchToProps = (dispatch) => ({
