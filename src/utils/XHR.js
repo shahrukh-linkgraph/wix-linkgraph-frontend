@@ -21,6 +21,6 @@ function checkStatus(response) {
   error.status = response.status;
   throw error;
 }
-
+// eslint-disable-next-line
 export default (url, options) =>
   axios(url, options).then(checkStatus).then(parseJSON);
