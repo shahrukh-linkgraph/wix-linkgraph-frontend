@@ -1,13 +1,13 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import { POST_LOGIN_USER_REQUEST } from "./type";
 import { createBrowserHistory } from "history";
-
 import XHR from "../../../utils/XHR";
+import { BASE_URL } from "../../../config/app";
 import { PostLoginUserSuccess, PostLoginUserFailure } from "./actions";
 
 async function PostLoginUserApi(data) {
   console.log("PostLoginUserRequest", data);
-  const URL = `https://api.searchatlas.com/api/token/`;
+  const URL = `${BASE_URL}/customer_login/`;
   const options = {
     headers: {
       "Content-Type": "application/json",

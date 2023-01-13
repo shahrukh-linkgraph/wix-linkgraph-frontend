@@ -6,7 +6,7 @@ import { PostLoginUserRequest } from "./redux/actions";
 const LoginLinkGraph = (props) => {
   const { PostLoginUserRequest, postLoginUserData } = props;
 
-  console.log("user-login", postLoginUserData);
+  console.log("user-login============>", postLoginUserData);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
