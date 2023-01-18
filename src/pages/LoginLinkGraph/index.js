@@ -1,31 +1,50 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { PostLoginUserRequest } from "./redux/actions";
 
 const LoginLinkGraph = (props) => {
   const { PostLoginUserRequest, postLoginUserData } = props;
 
-  console.log("user-login============>", postLoginUserData);
+  // console.log("user-login============>", postLoginUserData.loginUser.data);
 
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
+
   const [password, setPassword] = useState("");
-
+  const [validation, setValidation] = useState("");
   const Login = (event) => {
-    const data = {
-      username: email,
-      password: password,
-    };
+    
 
     event.preventDefault();
-    PostLoginUserRequest(data);
+    if (!username.length  ||  !password.length) {
+      setValidation("Please enter These Fields");
+    }else{
+      setValidation("");
+      const data = {
+        username: username,
+        password: password,
+      };
+      PostLoginUserRequest(data);
+     
+    }
+   
   };
-
+  
   return (
     <div>
       <Container className="pt-5">
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
+          {(postLoginUserData?.loginUser?.data?.detail ||
+            postLoginUserData?.loginUser?.data?.detail ||
+            validation) && (
+            <Alert variant={"danger"}>
+              {postLoginUserData?.loginUser?.data?.detail ||
+                postLoginUserData?.loginUser?.data?.detail ||
+                validation}
+            </Alert>
+          )}
             <Form>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <h1> Login</h1>
@@ -34,8 +53,8 @@ const LoginLinkGraph = (props) => {
                   type="text"
                   placeholder="Email"
                   name="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  onChange={(e) => setUserName(e.target.value)}
+                  value={username}
                 />
                 <Form.Text className="text-muted"></Form.Text>
               </Form.Group>
