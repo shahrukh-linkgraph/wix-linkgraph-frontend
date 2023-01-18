@@ -24,10 +24,16 @@ function* PostLoginUser({ data }) {
 
   try {
     const userlogin = yield call(PostLoginUserApi, data);
+    // console.log("Customer Login================>",data);
     localStorage.setItem("jwtToken", userlogin?.data?.token);
     yield put(PostLoginUserSuccess(userlogin));
-    history.push("/dashboard");
-    window.location.reload();
+    
+    if(userlogin?.data?.token){
+      history.push("/dashboard");
+      window.location.reload();
+      return false
+    }
+   
   } catch (e) {
     console.log("login_error", e);
     yield put(PostLoginUserFailure(e));
