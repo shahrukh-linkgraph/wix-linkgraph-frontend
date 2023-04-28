@@ -7,6 +7,7 @@ import AddPostscategoriesSaga from "../pages/AddPosts/redux/sagas";
 
 import loginUserSaga from "../pages/LoginLinkGraph/redux/sagas";
 import addRegisterSaga from "../pages/UserRegistration/redux/sagas";
+import userAutoLoginSaga from "../pages/Home/redux/sagas";
 
 export default function* mainSaga() {
   yield all([
@@ -16,5 +17,6 @@ export default function* mainSaga() {
     AddCategorySaga,
     AddPostscategoriesSaga,
     addRegisterSaga,
+    userAutoLoginSaga,
   ]);
 }

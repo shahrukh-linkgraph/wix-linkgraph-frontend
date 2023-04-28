@@ -40,7 +40,7 @@ const NavBar = () => {
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               to="/login"
               style={{
                 color: "white",
@@ -49,7 +49,7 @@ const NavBar = () => {
               }}
             >
               Login
-            </Link>
+            </Link> */}
             <Link
               to="/dashboard"
               style={{
